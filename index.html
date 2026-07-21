@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>House of Carisma — Healthier Carbs. Better Living.</title>
+<meta name="description" content="India's first healthy carb platform. Low GI Potato, Antioxidant Purple Sweet Potato, Vitamin A Orange Sweet Potato.">
+<meta name="theme-color" content="#0F6E56">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --teal: #0F6E56; --teal-light: #1D9E75; --teal-pale: #E1F5EE;
+    --orange: #D85A30; --orange-pale: #FAECE7;
+    --gold: #BA7517; --gold-pale: #FAEEDA;
+    --ink: #1A1A18; --ink-2: #4A4A46; --ink-3: #888780;
+    --cream: #FAFAF7; --white: #ffffff;
+    --font-d: 'Playfair Display', Georgia, serif;
+    --font-b: 'DM Sans', system-ui, sans-serif;
+    --r: 16px; --r-lg: 24px;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-b); background: var(--cream); color: var(--ink); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 300;
+    background: rgba(250,250,247,0.96); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border-bottom: 0.5px solid rgba(15,110,86,0.1);
+    height: 58px; display: flex; align-items: center; justify-content: space-between; padding: 0 3rem;
+  }
+  .nav-logo { text-decoration: none; display: flex; flex-direction: column; line-height: 1; }
+  .nav-logo .ho { font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-3); }
+  .nav-logo .br { font-family: var(--font-d); font-size: 21px; font-weight: 800; color: var(--teal); }
+  .dot { display: inline-block; width: 5px; height: 5px; background: var(--orange); border-radius: 50%; margin-left: 1px; vertical-align: middle; margin-bottom: 3px; }
+  .nav-r { display: flex; align-items: center; gap: 2rem; }
+  .nav-links { display: flex; gap: 1.75rem; list-style: none; }
+  .nav-links a { font-size: 13px; font-weight: 500; color: var(--ink-2); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--teal); }
+  .nav-cta { background: var(--teal); color: #fff; padding: 9px 22px; border-radius: 100px; font-size: 13px; font-weight: 600; text-decoration: none; transition: background 0.2s; }
+  .nav-cta:hover { background: var(--teal-light); }
+
+  /* ── TICKER — sits between nav and hero ── */
+  .ticker { background: var(--teal); overflow: hidden; height: 40px; display: flex; align-items: center; }
+  .ticker-track { display: flex; animation: tick 32s linear infinite; white-space: nowrap; }
+  .ticker-item { display: inline-flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.92); padding: 0 2.5rem; border-right: 1px solid rgba(255,255,255,0.2); white-space: nowrap; }
+  @keyframes tick { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+  /* ── HERO ── */
+  .hero { width: 100%; background: #f0ebe0; }
+  .hero-inner { position: relative; width: 100%; line-height: 0; }
+  .hero-img-base { width: 100%; height: auto; display: block; transition: opacity 0.9s ease; }
+  .hero-img-base.faded { opacity: 0; }
+  .hero-img-overlay {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: contain; opacity: 0; transition: opacity 0.9s ease;
+    cursor: pointer; pointer-events: none; z-index: 2;
+  }
+  .hero-img-overlay.active { opacity: 1; pointer-events: auto; }
+  .hero-badge {
+    position: absolute; bottom: 20px; left: 20px; z-index: 3;
+    background: var(--orange); color: #fff; font-size: 12px; font-weight: 700;
+    padding: 9px 18px; border-radius: 100px; opacity: 0; transition: opacity 0.9s ease;
+    pointer-events: none; box-shadow: 0 8px 22px rgba(216,90,48,0.35);
+  }
+  .hero-inner.vita-active .hero-badge { opacity: 1; }
+
+  /* ── PAN INDIA CELEBRATION BANNER ── */
+  .pan-india-strip {
+    position: relative; overflow: hidden; cursor: pointer;
+    background: linear-gradient(90deg, var(--orange) 0%, var(--gold) 100%);
+    padding: 13px 2rem; text-align: center;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    border: none; width: 100%; font-family: var(--font-b);
+  }
+  .pan-india-strip::before {
+    content: ''; position: absolute; top: 0; left: -60%; width: 40%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+    transform: skewX(-20deg); animation: shimmer-sweep 3.2s ease-in-out infinite;
+  }
+  @keyframes shimmer-sweep {
+    0% { left: -60%; }
+    50% { left: 130%; }
+    100% { left: 130%; }
+  }
+  .pis-text { font-size: 13.5px; font-weight: 600; color: #fff; letter-spacing: 0.01em; position: relative; z-index: 1; }
+  .pis-text strong { font-weight: 800; }
+  .pis-cta { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 5px; background: rgba(255,255,255,0.22); color: #fff; padding: 6px 14px; border-radius: 100px; font-size: 12.5px; font-weight: 700; flex-shrink: 0; transition: background 0.2s, transform 0.2s; }
+  .pan-india-strip:hover .pis-cta { background: rgba(255,255,255,0.34); transform: translateX(2px); }
+
+  /* ── CTA ROW — directly below hero ── */
+  .hero-cta-row {
+    background: var(--white); padding: 1.5rem 3rem;
+    display: flex; align-items: center; gap: 1rem;
+    border-bottom: 1px solid rgba(15,110,86,0.08);
+  }
+  .btn-primary {
+    background: var(--teal); color: #fff;
+    padding: 16px 36px; border-radius: 100px;
+    font-family: var(--font-b); font-size: 16px; font-weight: 600;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+    transition: background 0.2s, transform 0.15s; white-space: nowrap;
+  }
+  .btn-primary:hover { background: var(--teal-light); transform: translateY(-2px); }
+  .btn-outline {
+    background: transparent; color: var(--ink);
+    border: 2px solid rgba(26,26,24,0.2);
+    padding: 15px 36px; border-radius: 100px;
+    font-family: var(--font-b); font-size: 16px; font-weight: 500;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+    transition: border-color 0.2s, color 0.2s, transform 0.15s; white-space: nowrap;
+  }
+  .btn-outline:hover { border-color: var(--teal); color: var(--teal); transform: translateY(-2px); }
+
+  /* ── LAYOUT ── */
+  .container { max-width: 1120px; margin: 0 auto; padding: 0 3rem; }
+  .section { padding: 5rem 0; }
+  .section-white { background: var(--white); }
+  .section-cream { background: var(--cream); }
+  .section-ink { background: var(--ink); }
+  .divider { height: 1px; background: rgba(15,110,86,0.08); }
+  .label { font-size: 10px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--teal); margin-bottom: 0.5rem; }
+  .h2 { font-family: var(--font-d); font-size: clamp(1.9rem, 3.5vw, 2.8rem); font-weight: 800; color: var(--ink); line-height: 1.1; letter-spacing: -0.02em; }
+  .body { font-size: 0.95rem; color: var(--ink-2); font-weight: 300; line-height: 1.7; }
+
+  /* ── AVAILABILITY ── */
+  .city-tabs{
+  display:flex;
+  gap:42px;
+  border-bottom:1px solid #e5e5e5;
+  margin-bottom:32px;
+  overflow-x:auto;
+}
+
+.city-tab{
+  background:none;
+  border:none;
+  font-size:20px;
+  font-weight:500;
+  color:#6b6b6b;
+  padding:0 0 14px;
+  cursor:pointer;
+  position:relative;
+  white-space:nowrap;
+}
+
+.city-tab.active{
+  color:#111;
+}
+
+.city-tab.active::after{
+  content:'';
+  position:absolute;
+  left:0;
+  bottom:-1px;
+  width:100%;
+  height:3px;
+  background:#0E6B57;
+  border-radius:4px;
+}
+
+.soon-badge{
+  font-size:11px;
+  margin-left:8px;
+  color:#D85A30;
+}
+
+.platform-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:24px;
+}
+
+.platform-card{
+  background:#fff;
+  border:1px solid #ececec;
+  border-radius:24px;
+  padding:28px;
+  text-align:center;
+  transition:.25s;
+  text-decoration:none;
+  color:inherit;
+  display:block;
+  cursor:pointer;
+}
+
+.platform-card:hover{
+  transform:translateY(-4px);
+  border-color:#0E6B57;
+  box-shadow:0 16px 40px rgba(15,110,86,0.12);
+}
+
+.platform-card.disabled{
+  cursor:default;
+  opacity:0.55;
+}
+
+.platform-card.disabled:hover{
+  transform:none;
+  border-color:#ececec;
+  box-shadow:none;
+}
+
+.platform-card img{
+  width:90px;
+  height:90px;
+  object-fit:contain;
+  margin-bottom:14px;
+}
+
+.platform-card h4{
+  margin:0 0 6px;
+  font-size:18px;
+}
+
+.platform-card .pcard-cta{
+  font-size:12px;
+  font-weight:600;
+  color:#0E6B57;
+}
+
+.platform-card.disabled .pcard-cta{
+  color:#D85A30;
+}
+  .avail-wrap { padding: 3.5rem 0 4rem; background: var(--white); }
+  .avail-top { display: flex; align-items: baseline; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.4rem; }
+  .avail-count { font-family: var(--font-d); font-size: 2rem; font-weight: 800; color: var(--teal); line-height: 1; }
+  .avail-count-label { font-size: 1rem; font-weight: 500; color: var(--teal); }
+  .avail-headline { font-family: var(--font-d); font-size: clamp(1.6rem, 2.8vw, 2.2rem); font-weight: 700; color: var(--ink); letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+  .avail-cities { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 2.5rem; }
+  .avail-cities-label { font-size: 11px; font-weight: 500; color: var(--ink-3); }
+  .avail-cities-dot { width: 3px; height: 3px; background: var(--ink-3); border-radius: 50%; }
+  .avail-city { font-size: 13px; font-weight: 600; color: var(--ink); }
+
+  /* ── PAN INDIA SECTION ── */
+  .pan-india-label { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem; }
+
+  .pan-india-panel {
+    background: linear-gradient(135deg, var(--teal) 0%, var(--teal-light) 100%);
+    border-radius: var(--r-lg); padding: 2.75rem 3rem; color: #fff;
+    display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+    box-shadow: 0 24px 56px rgba(15,110,86,0.28); position: relative; overflow: hidden;
+  }
+  .pan-india-panel::before {
+    content: '🇮🇳'; position: absolute; right: -20px; top: -30px; font-size: 180px; opacity: 0.08; transform: rotate(-12deg);
+  }
+  .pip-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.18); border-radius: 100px; padding: 6px 14px; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.9rem; }
+  .pip-title { font-family: var(--font-d); font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.01em; margin-bottom: 0.6rem; }
+  .pip-sub { font-size: 0.95rem; font-weight: 300; color: rgba(255,255,255,0.88); max-width: 460px; line-height: 1.6; }
+  .pip-max { display: flex; align-items: center; gap: 10px; margin-top: 1.1rem; flex-wrap: wrap; }
+  .pip-max-name { font-family: var(--font-d); font-weight: 800; font-size: 1.05rem; color: #fff; letter-spacing: 0.01em; }
+  .pip-tag { background: rgba(255,255,255,0.2); color: #fff; font-size: 11px; font-weight: 700; padding: 4px 13px; border-radius: 100px; }
+  .pip-max-note { font-size: 12.5px; color: rgba(255,255,255,0.78); font-weight: 300; line-height: 1.65; margin-top: 0.5rem; max-width: 460px; }
+  .pip-btn { flex-shrink: 0; display: inline-flex; align-items: center; gap: 9px; background: #fff; color: var(--teal); padding: 16px 30px; border-radius: 100px; font-family: var(--font-b); font-size: 15px; font-weight: 700; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; white-space: nowrap; }
+  .pip-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,0.18); }
+
+  /* ── VIDEO SECTION ── */
+  .video-section { padding: 5rem 0; background: var(--cream); }
+  .video-top { margin-bottom: 2rem; display: flex; flex-direction: column; gap: 0.6rem; }
+  .video-eyebrow { font-size: 10px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--teal); }
+  .video-title { font-family: var(--font-d); font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 800; color: var(--ink); line-height: 1.08; letter-spacing: -0.02em; }
+  .video-wrap { border-radius: var(--r-lg); overflow: hidden; background: #000; width: 100%; max-height: 560px; box-shadow: 0 24px 64px rgba(15,110,86,0.15); margin-bottom: 2.5rem; }
+  .video-wrap video { width: 100%; height: 100%; max-height: 560px; object-fit: cover; display: block; }
+  .video-bottom { display: flex; flex-direction: column; gap: 1.25rem; max-width: 760px; }
+  .video-sub { font-size: 1rem; color: var(--ink-2); font-weight: 300; line-height: 1.75; }
+  .tag-row { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag-pill { font-size: 12px; font-weight: 500; padding: 6px 14px; border-radius: 100px; background: var(--white); border: 1px solid rgba(15,110,86,0.15); color: var(--ink-2); }
+  .tag-pill.hi { background: var(--teal-pale); border-color: rgba(15,110,86,0.25); color: var(--teal); font-weight: 600; }
+
+  /* ── PRODUCTS ── */
+  .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 2.5rem; }
+  .product-card { border-radius: 20px; overflow: hidden; border: 1.5px solid rgba(15,110,86,0.1); background: var(--white); transition: transform 0.25s, box-shadow 0.25s; display: flex; flex-direction: column; }
+  .product-card:hover { transform: translateY(-6px); box-shadow: 0 24px 56px rgba(15,110,86,0.12); }
+  .product-img { height: 220px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+  .product-img img { height: 100%; width: 100%; object-fit: contain; padding: 1.5rem; }
+  .product-badge { position: absolute; top: 12px; right: 12px; font-size: 10px; font-weight: 600; padding: 5px 12px; border-radius: 100px; }
+  .badge-live { background: var(--teal); color: #fff; } .badge-soon { background: var(--ink); color: rgba(255,255,255,0.85); }
+  .product-body { padding: 20px; flex: 1; display: flex; flex-direction: column; gap: 10px; }
+  .product-name { font-family: var(--font-d); font-size: 1.25rem; font-weight: 700; color: var(--ink); }
+  .product-sub { font-size: 11px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; }
+  .sub-p { color: var(--teal); } .sub-a { color: #6B35A8; } .sub-v { color: var(--orange); }
+  .product-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .ptag-pill { font-size: 11px; font-weight: 500; padding: 4px 10px; border-radius: 100px; background: var(--cream); border: 1px solid rgba(15,110,86,0.12); color: var(--ink-2); }
+  .product-benefit { font-size: 13px; color: var(--ink-2); font-weight: 300; line-height: 1.6; border-top: 1px solid rgba(15,110,86,0.08); padding-top: 10px; margin-top: auto; }
+  .product-btn { display: flex; align-items: center; justify-content: center; gap: 7px; padding: 13px; border-radius: 12px; font-size: 13px; font-weight: 600; text-decoration: none; margin-top: 4px; transition: background 0.2s; }
+  .btn-live { background: var(--teal); color: #fff; } .btn-live:hover { background: var(--teal-light); }
+  .btn-soon { background: var(--cream); color: var(--ink-3); border: 1.5px solid rgba(15,110,86,0.12); cursor: default; }
+
+  /* ── FARM TO PLATE ── */
+  .chain-grid { display: grid; grid-template-columns: 420px 1fr; gap: 5rem; align-items: start; margin-top: 2rem; }
+  .chain-steps { display: flex; flex-direction: column; }
+  .chain-step { display: flex; align-items: flex-start; gap: 14px; padding: 16px 0; border-bottom: 1px dashed rgba(15,110,86,0.15); }
+  .chain-step:last-child { border-bottom: none; }
+  .chain-num { width: 34px; height: 34px; border-radius: 50%; background: var(--teal); color: #fff; font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: var(--font-d); }
+  .chain-title { font-size: 14px; font-weight: 600; color: var(--ink); }
+  .chain-sub { font-size: 12px; color: var(--ink-3); font-weight: 400; margin-top: 2px; }
+  .chain-tag { margin-left: auto; font-size: 10px; font-weight: 600; padding: 4px 10px; border-radius: 100px; white-space: nowrap; flex-shrink: 0; }
+  .ct { background: var(--teal-pale); color: var(--teal); } .co { background: var(--orange-pale); color: var(--orange); }
+
+  /* ── FOUNDER ── */
+  .founder-grid { display: grid; grid-template-columns: 360px 1fr; gap: 5rem; align-items: center; }
+  .founder-img-wrap { position: relative; border-radius: var(--r-lg); overflow: hidden; box-shadow: 0 24px 64px rgba(15,110,86,0.14); aspect-ratio: 1/1; }
+  .founder-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .founder-img-badge { position: absolute; bottom: 1.25rem; left: 1.25rem; right: 1.25rem; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-radius: 12px; padding: 14px 16px; display: flex; align-items: center; gap: 12px; }
+  .fib-bar { width: 3px; height: 36px; background: var(--teal); border-radius: 2px; flex-shrink: 0; }
+  .fib-name { font-size: 14px; font-weight: 600; color: var(--ink); }
+  .fib-title { font-size: 11px; color: var(--ink-3); font-weight: 400; margin-top: 2px; }
+  .founder-content { display: flex; flex-direction: column; gap: 1.5rem; }
+  .founder-stat { display: flex; align-items: baseline; gap: 8px; }
+  .founder-stat-num { font-family: var(--font-d); font-size: 3.5rem; font-weight: 800; color: var(--teal); line-height: 1; }
+  .founder-stat-label { font-size: 1rem; font-weight: 400; color: var(--ink-3); }
+  .founder-quote { font-family: var(--font-d); font-size: clamp(1.2rem, 2vw, 1.6rem); font-style: italic; color: var(--ink); line-height: 1.5; border-left: 3px solid var(--teal); padding-left: 1.25rem; }
+  .founder-desc { font-size: 0.95rem; color: var(--ink-2); font-weight: 300; line-height: 1.7; max-width: 460px; }
+  .mini-stats { display: flex; gap: 2rem; flex-wrap: wrap; }
+  .mini-stat-num { font-family: var(--font-d); font-size: 1.6rem; font-weight: 700; color: var(--teal); line-height: 1; }
+  .mini-stat-label { font-size: 11px; color: var(--ink-3); margin-top: 4px; }
+
+  /* ── EDU SIMPLE ── */
+  .edu-simple-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 2.5rem; border: 1px solid rgba(15,110,86,0.1); border-radius: 20px; overflow: hidden; }
+  .edu-item { padding: 2rem 2.25rem; border-right: 1px solid rgba(15,110,86,0.08); border-bottom: 1px solid rgba(15,110,86,0.08); background: var(--white); transition: background 0.2s; }
+  .edu-item:hover { background: var(--cream); }
+  .edu-item:nth-child(even) { border-right: none; }
+  .edu-item:nth-last-child(-n+2) { border-bottom: none; }
+  .edu-q { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 0.6rem; line-height: 1.4; }
+  .edu-a { font-size: 13px; color: var(--ink-3); font-weight: 300; line-height: 1.75; }
+
+  /* ── RESEARCH TEASER ── */
+  .research-teaser { background: var(--ink); padding: 4.5rem 0; }
+  .rt-label { font-size: 10px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: #9FE1CB; margin-bottom: 0.6rem; }
+  .rt-title { font-family: var(--font-d); font-size: clamp(1.7rem, 3.2vw, 2.4rem); font-weight: 800; color: #fff; line-height: 1.15; letter-spacing: -0.01em; max-width: 620px; }
+  .rt-sub { font-size: 0.95rem; color: rgba(255,255,255,0.55); font-weight: 300; line-height: 1.7; max-width: 600px; margin-top: 0.9rem; }
+  .rt-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 2.5rem; }
+  .rt-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 20px 18px; text-decoration: none; transition: border-color 0.25s, background 0.25s, transform 0.22s; display: flex; flex-direction: column; gap: 8px; }
+  .rt-card:hover { border-color: rgba(159,225,203,0.4); background: rgba(255,255,255,0.07); transform: translateY(-4px); }
+  .rt-tag { font-size: 9.5px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #9FE1CB; }
+  .rt-card-title { font-size: 13px; font-weight: 600; color: #fff; line-height: 1.4; }
+  .rt-arrow { font-size: 12px; color: rgba(255,255,255,0.35); margin-top: auto; }
+  .rt-btn { display: inline-flex; align-items: center; gap: 8px; background: #fff; color: var(--ink); padding: 15px 30px; border-radius: 100px; font-family: var(--font-b); font-size: 14px; font-weight: 700; text-decoration: none; margin-top: 2.5rem; transition: transform 0.2s; }
+  .rt-btn:hover { transform: translateY(-2px); }
+
+  @media (max-width: 1024px) {
+    .rt-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .research-teaser { padding: 3rem 0; }
+    .rt-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ── FOOTER ── */
+  footer { background: var(--ink); padding: 3rem; border-top: 1px solid rgba(255,255,255,0.05); display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: start; }
+  .footer-brand { font-family: var(--font-d); font-size: 20px; font-weight: 800; color: rgba(255,255,255,0.85); }
+  .footer-tag { font-size: 12px; color: rgba(255,255,255,0.3); font-weight: 300; margin-top: 4px; margin-bottom: 1rem; }
+  .footer-contact { font-size: 12px; color: rgba(255,255,255,0.45); line-height: 2; }
+  .footer-contact a { color: #9FE1CB; text-decoration: none; }
+  .footer-links { display: flex; flex-direction: column; gap: 0.6rem; list-style: none; text-align: right; }
+  .footer-links a { font-size: 13px; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: #9FE1CB; }
+  .footer-copy { grid-column: 1/-1; font-size: 11px; color: rgba(255,255,255,0.18); font-weight: 300; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1.5rem; }
+
+  /* ── WHATSAPP ── */
+  .wa { position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 200; width: 52px; height: 52px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(37,211,102,0.4); text-decoration: none; transition: transform 0.2s; }
+  .wa:hover { transform: scale(1.08); }
+
+  /* ── ANIMATIONS ── */
+  .fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+  .d1 { transition-delay: 0.08s; } .d2 { transition-delay: 0.16s; } .d3 { transition-delay: 0.24s; } .d4 { transition-delay: 0.32s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    .platform-grid { grid-template-columns: repeat(2, 1fr); }
+    .products-grid { grid-template-columns: 1fr 1fr; }
+    .chain-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .video-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .founder-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .edu-simple-grid { grid-template-columns: 1fr; }
+    .edu-item:nth-child(even) { border-right: none; }
+    .edu-item:nth-last-child(-n+2) { border-bottom: 1px solid rgba(15,110,86,0.08); }
+    .edu-item:last-child { border-bottom: none; }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 0 1.25rem; height: 52px; }
+    .nav-links { display: none; }
+    .container { padding: 0 1.25rem; }
+    .section { padding: 3.5rem 0; }
+    .hero-cta-row {
+      padding: 0.875rem 1rem;
+      gap: 0.625rem;
+      flex-wrap: nowrap;        /* keep both on one line */
+    }
+    .hero-cta-row .btn-primary,
+    .hero-cta-row .btn-outline {
+      flex: 1;                  /* equal width */
+      justify-content: center;
+      padding: 13px 10px;
+      font-size: 13px;
+    }
+    .avail-wrap { padding: 2.5rem 0 3rem; }
+    .pan-india-strip { padding: 11px 1rem; }
+    .pis-text { font-size: 12px; }
+    .pan-india-panel { flex-direction: column; text-align: center; padding: 2.25rem 1.5rem; }
+    .pip-sub { max-width: 100%; }
+    .products-grid { grid-template-columns: 1fr; }
+    footer { grid-template-columns: 1fr; padding: 2rem 1.25rem; }
+    .footer-links { text-align: left; flex-direction: row; flex-wrap: wrap; gap: 1rem; }
+    .founder-img-wrap { max-width: 100%; }
+  }
+  @media (max-width: 480px) {
+    .platform-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "xiq01nn5b8");
+</script>
+
+
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <span class="ho">House of</span>
+    <span class="br">carisma<span class="dot"></span></span>
+  </a>
+  <div class="nav-r">
+    <ul class="nav-links">
+      <li><a href="#availability">Shop Now</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#learn">Learn</a></li>
+      <li><a href="why-carisma.html">Why Carisma</a></li>
+    </ul>
+    <a href="#availability" class="nav-cta">Order Now</a>
+  </div>
+</nav>
+
+<!-- TICKER — top of page, above hero image -->
+<div style="padding-top:58px">
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span class="ticker-item">✦ Lower GI Guaranteed</span>
+      <span class="ticker-item">✦ Delhi · Mumbai · Pune</span>
+      <span class="ticker-item">✦ 20,00,000+ Happy Customers</span>
+      <span class="ticker-item">✦ Non-GMO · Naturally Indian</span>
+      <span class="ticker-item">✦ 17 Years SV Agri Legacy</span>
+      <span class="ticker-item">✦ Lower GI Verified</span>
+      <span class="ticker-item">✦ Delhi · Mumbai · Pune</span>
+      <span class="ticker-item">✦ 20,00,000+ Happy Customers</span>
+      <span class="ticker-item">✦ Non-GMO · Naturally Indian</span>
+      <span class="ticker-item">✦ 17 Years SV Agri Legacy</span>
+    </div>
+  </div>
+</div>
+
+<!-- PAN INDIA CELEBRATION BANNER -->
+<button class="pan-india-strip" onclick="goToPanIndia()" aria-label="We now deliver Pan India — click to order">
+  <span class="pis-text">🎉 India's healthiest carb, now for every Indian home — <strong>we deliver Pan India</strong></span>
+  <span class="pis-cta">Order Now
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </span>
+</button>
+
+<!-- HERO — auto-rotates between main banner and Vita Powder promo -->
+<section class="hero">
+  <div class="hero-inner" id="heroInner">
+    <img
+      src="https://static.wixstatic.com/media/2ef54a_096f2c9427e84792a74a42df3f2eecce~mv2.png"
+      alt="House of Carisma — Lower GI Guaranteed. Carisma Potato, AOXY, VITA. Non-GMO. 17 Years SV Agri."
+      id="heroImg"
+      class="hero-img-base"
+    >
+    <img
+      src="https://static.wixstatic.com/media/2ef54a_cae34223b6d9461c9bff17339bb0bca8~mv2.png"
+      alt="Free Carisma Vita Orange Sweet Potato Powder — tap to claim on WhatsApp"
+      id="heroImgVita"
+      class="hero-img-overlay"
+    >
+    <div class="hero-badge">🎁 Free Sample — Tap to Claim on WhatsApp</div>
+  </div>
+</section>
+
+<!-- VIDEO + CARISMA POTATO -->
+<section class="video-section">
+  <div class="container">
+
+    <!-- Title first -->
+    <div class="video-top fade-up">
+      <div class="video-eyebrow">Now Available</div>
+      <div class="video-title">Carisma Potato<br>India's Only Lower GI Potato</div>
+    </div>
+
+    <!-- Video below title -->
+    <div class="video-wrap fade-up d1">
+      <video autoplay muted loop playsinline>
+        <source src="https://video.wixstatic.com/video/2ef54a_174439247daa4c3f9ab9dac481924877/480p/mp4/file.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <!-- Description + tags + CTA below video -->
+    <div class="video-bottom fade-up d2">
+      <div class="video-sub">Enjoy the creamy, melt-in-your-mouth taste of Carisma — India's first and only naturally grown Lower Glycemic Index (Low GI) potato, offering a smarter everyday healthy choice for a healthier lifestyle. Releasing glucose slowly and steadily to help avoid rapid blood sugar spikes.</div>
+      <div class="tag-row">
+        <span class="tag-pill hi">GI 52–58</span>
+        <span class="tag-pill hi">33% Lower GI</span>
+        <span class="tag-pill">25% Less Carbs</span>
+        <span class="tag-pill">10% More Protein</span>
+        <span class="tag-pill">Non-GMO</span>
+        <span class="tag-pill">Vitamin C Rich</span>
+      </div>
+      <a href="#availability" class="btn-primary" style="width:fit-content">
+        Order Now
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+<!-- AVAILABILITY -->
+<div class="avail-wrap" id="availability">
+  <div class="container">
+
+    <div class="avail-top fade-up">
+      <span class="avail-count">20,00,000+</span>
+      <span class="avail-count-label">Happy Customers</span>
+    </div>
+
+    <h2 class="avail-headline fade-up d1">
+      Available across India's leading quick-commerce platforms.
+    </h2>
+
+    <p class="body fade-up d2" style="margin-bottom:2rem;">
+      Farm to Kitchen in Minutes.
+    </p>
+
+    <!-- INSTANT DELIVERY -->
+    <div id="panel-instant">
+      <!-- CITY TABS -->
+      <div class="city-tabs fade-up d2">
+        <button class="city-tab active" data-city="pune">Pune</button>
+        <button class="city-tab" data-city="mumbai">Mumbai</button>
+        <button class="city-tab" data-city="delhi">Delhi</button>
+        <button class="city-tab" data-city="bangalore">
+          Bangalore
+          <span class="soon-badge">Opening Soon</span>
+        </button>
+      </div>
+
+      <!-- PLATFORMS -->
+      <div class="platform-grid" id="platformGrid"></div>
+    </div>
+
+    <!-- PAN INDIA DELIVERY -->
+    <div id="panel-pan-india" style="margin-top:2.5rem;">
+      <div class="pan-india-label">
+        <span>📍</span> Not in Mumbai, Pune or Delhi?
+      </div>
+      <div class="pan-india-panel">
+        <div>
+          <div class="pip-badge">🎉 New Milestone</div>
+          <div class="pip-title">We now deliver Pan India.</div>
+          <div class="pip-sub">Not in Mumbai, Pune or Delhi? No problem — order Carisma from anywhere in India directly on WhatsApp, and we'll ship it straight to your door.</div>
+          <div class="pip-max">
+            <span class="pip-max-name">CARISMA MAX</span>
+            <span class="pip-tag">5kg</span>
+            <span class="pip-tag">10kg</span>
+          </div>
+          <div class="pip-max-note">Mix & match any combination — Carisma Low GI Potato, VITA Orange Sweet Potato, AOXY Purple Sweet Potato — your products, your quantities, your choice.</div>
+        </div>
+        <a href="https://wa.me/917028155911?text=Hi%2C%20I%27d%20like%20to%20order%20Carisma%20Low%20GI%20Potato%20%E2%80%94%20Pan%20India%20delivery" target="_blank" rel="noopener noreferrer" class="pip-btn">
+          Order on WhatsApp
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.12.554 4.107 1.523 5.836L.057 23.215a.75.75 0 0 0 .916.938l5.451-1.43A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.677-.523-5.197-1.432l-.372-.222-3.857 1.013 1.03-3.762-.242-.383A9.944 9.944 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- PRODUCTS -->
+<section class="section section-cream" id="products">
+  <div class="container">
+    <p class="label fade-up">The House of Carisma Portfolio</p>
+    <h2 class="h2 fade-up d1">Choose your health goal.</h2>
+    <p class="body fade-up d2" style="max-width:520px;margin-top:0.5rem">Every Carisma product is built around a specific functional benefit — not yield, not shelf appeal, not generic health claims.</p>
+    <div class="products-grid">
+      <div class="product-card fade-up d1">
+        <div class="product-img" style="background:#EDF7F3;">
+          <img src="https://static.wixstatic.com/media/2ef54a_8c7334caf0f44840bfecd8af2d9bc08c~mv2.png" alt="Carisma Low GI Potato">
+          <span class="product-badge badge-live">Live Now</span>
+        </div>
+        <div class="product-body">
+          <div class="product-sub sub-p">Low GI Potato</div>
+          <div class="product-name">Carisma Potato</div>
+          <div class="product-tags">
+            <span class="ptag-pill">33% Lower GI</span><span class="ptag-pill">25% Less Carbs</span>
+            <span class="ptag-pill">10% More Protein</span><span class="ptag-pill">Non-GMO</span>
+          </div>
+          <div class="product-benefit">Blood sugar management. Diabetic-friendly. The same aloo your family loves — smarter.</div>
+          <a href="#availability" class="product-btn btn-live">Shop Now →</a>
+        </div>
+      </div>
+      <div class="product-card fade-up d2">
+        <div class="product-img" style="background:#F5EEF8;">
+          <img src="https://static.wixstatic.com/media/2ef54a_d1f2061394514347aa12cac3eed1c069~mv2.png" alt="Carisma AOXY Purple Sweet Potato">
+          <span class="product-badge badge-soon">Coming Soon</span>
+        </div>
+        <div class="product-body">
+          <div class="product-sub sub-a">Purple Sweet Potato</div>
+          <div class="product-name">Carisma AOXY</div>
+          <div class="product-tags">
+            <span class="ptag-pill">Rich in Anthocyanins</span><span class="ptag-pill">Lower GI</span><span class="ptag-pill">Fibre Rich</span>
+          </div>
+          <div class="product-benefit">Antioxidant nutrition comparable to blueberries. Everyday wellness. Manages stress.</div>
+          <div class="product-btn btn-soon">Notify Me — Coming Soon</div>
+        </div>
+      </div>
+      <div class="product-card fade-up d3">
+        <div class="product-img" style="background:#FDF3EC;">
+          <img src="https://static.wixstatic.com/media/2ef54a_716ba0be845f445884963d3107aa9684~mv2.jpeg" alt="Carisma VITA Orange Sweet Potato">
+          <span class="product-badge badge-soon">Coming Soon</span>
+        </div>
+        <div class="product-body">
+          <div class="product-sub sub-v">Orange Sweet Potato</div>
+          <div class="product-name">Carisma VITA</div>
+          <div class="product-tags">
+            <span class="ptag-pill">Rich in Beta-Carotene</span><span class="ptag-pill">Lower GI</span><span class="ptag-pill">Vitamin A</span>
+          </div>
+          <div class="product-benefit">Supports eyes, skin and immunity. Naturally rich in Vitamin A nutrition. Fibre-rich.</div>
+          <div class="product-btn btn-soon">Launching Soon in Bangalore</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<div class="divider"></div>
+
+<!-- FOUNDER -->
+<section class="section section-cream">
+  <div class="container">
+    <div class="founder-grid">
+      <div class="founder-img-wrap fade-up">
+        <img src="https://static.wixstatic.com/media/2ef54a_cdfd8915a6c5467fa309f09b9de5666d~mv2.jpg" alt="Hemant Gaur — Founder & Managing Director, SV Agri">
+        <div class="founder-img-badge">
+          <div class="fib-bar"></div>
+          <div><div class="fib-name">Hemant Gaur</div><div class="fib-title">Founder & Managing Director, SV Agri</div></div>
+        </div>
+      </div>
+      <div class="founder-content fade-up d2">
+        <div class="founder-stat">
+          <span class="founder-stat-num">32</span>
+          <span class="founder-stat-label">Years of Agricultural Legacy</span>
+        </div>
+        <div class="founder-quote">"With over three decades of agricultural legacy, he envisioned to bring healthier carbs to every Indian kitchen."</div>
+        <p class="founder-desc">Hemant Gaur built SV Agri from the ground up — starting in 2008 in Pune, establishing seed production infrastructure, forging exclusive partnerships with Dutch breeder Agrico B.V., and creating a full-stack supply chain before a single packet of Carisma reached a consumer's hand. His belief: functional nutrition is produced at the seed, not claimed on the label.</p>
+        <div class="mini-stats">
+          <div><div class="mini-stat-num">50K+</div><div class="mini-stat-label">Farmer Network</div></div>
+          <div><div class="mini-stat-num">14</div><div class="mini-stat-label">States Presence</div></div>
+          <div><div class="mini-stat-num">IRMA</div><div class="mini-stat-label">Alumni, GB Pant University</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- LEARN -->
+<section class="section section-white" id="learn">
+  <div class="container">
+    <p class="label fade-up">Education Hub</p>
+    <h2 class="h2 fade-up d1">Understand what you eat.</h2>
+    <p class="body fade-up d2" style="max-width:480px;margin-top:0.5rem">Smarter carb choices start with better information.</p>
+    <div class="edu-simple-grid fade-up d2">
+      <div class="edu-item">
+        <div class="edu-q">What is Glycaemic Index (GI)?</div>
+        <div class="edu-a">GI measures how fast food raises blood sugar on a scale of 0–100. Below 55 is Low GI — slow, steady release. Regular potato scores 80. Carisma scores 52–58.</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-q">Why does GI matter for Indians?</div>
+        <div class="edu-a">India has 101 million diabetics — the highest in the world. Rice and potato are daily staples. Switching to lower GI versions of the same food is the most sustainable health intervention.</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-q">GI vs GL — what is the difference?</div>
+        <div class="edu-a">GI measures the speed of blood sugar rise. Glycaemic Load also accounts for how much you eat. Carisma has both a lower GI and 33% fewer carbs per serving — a double advantage.</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-q">What are Anthocyanins?</div>
+        <div class="edu-a">Anthocyanins are pigments that give purple foods their colour — powerful antioxidants, the same family found in blueberries and açaí. Carisma AOXY purple sweet potato is naturally rich in them.</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-q">What is Beta-Carotene?</div>
+        <div class="edu-a">Beta-Carotene converts to Vitamin A in the body, supporting vision, immune function, and skin health. Carisma VITA orange sweet potato is one of the richest available food sources.</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-q">Does cooking method affect GI?</div>
+        <div class="edu-a">Yes. Cooling cooked potato creates resistant starch, lowering GI further. Roasting is better than frying. Eating with fat or protein slows glucose absorption. Carisma's natural GI advantage compounds with smart cooking.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- BACKED BY SCIENCE TEASER -->
+<section class="research-teaser">
+  <div class="container">
+    <p class="rt-label">Peer-Reviewed & Independently Verified</p>
+    <h2 class="rt-title">The Low GI claim isn't ours to make. Science made it first.</h2>
+    <p class="rt-sub">Carisma was discovered and classified as a low-GI potato cultivar by researchers at the University of Sydney — published in the British Journal of Nutrition. Here's what the independent research and press say.</p>
+
+    <div class="rt-grid">
+      <a href="https://pubmed.ncbi.nlm.nih.gov/24103358/" target="_blank" rel="noopener noreferrer" class="rt-card">
+        <span class="rt-tag">Peer-Reviewed Study</span>
+        <span class="rt-card-title">British Journal of Nutrition — the study that discovered Carisma is Low GI</span>
+        <span class="rt-arrow">Read on PubMed ↗</span>
+      </a>
+      <a href="https://www.mdpi.com/2072-6643/10/11/1764" target="_blank" rel="noopener noreferrer" class="rt-card">
+        <span class="rt-tag">Academic Review</span>
+        <span class="rt-card-title">Nutrients Journal — the role of the humble potato in a healthy diet</span>
+        <span class="rt-arrow">Read on MDPI ↗</span>
+      </a>
+      <a href="https://www.apollo247.com/blog/article/can-diabetics-eat-potatoes" target="_blank" rel="noopener noreferrer" class="rt-card">
+        <span class="rt-tag">Health Platform</span>
+        <span class="rt-card-title">Apollo247 — Carisma named as the best potato choice for diabetics</span>
+        <span class="rt-arrow">Read Article ↗</span>
+      </a>
+      <a href="https://www.freshplaza.com/north-america/article/9021491/nutrispud-line-of-potatoes-answers-consumer-demand-for-healthier-options/" target="_blank" rel="noopener noreferrer" class="rt-card">
+        <span class="rt-tag">Trade Press</span>
+        <span class="rt-card-title">FreshPlaza — the world's first Low Glycemic Response potato line</span>
+        <span class="rt-arrow">Read Article ↗</span>
+      </a>
+    </div>
+
+    <a href="why-carisma.html" class="rt-btn">
+      Read the Full Research
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+
+
+<!-- LATEST FROM INSTAGRAM -->
+<section class="section section-white">
+  <div class="container">
+    <p class="label">Follow Our Journey</p>
+    <h2 class="h2">Latest from Instagram</h2>
+
+    <script src="https://elfsightcdn.com/platform.js" async></script>
+    <div class="elfsight-app-99bb1afa-1f07-4d04-845b-9aa8c60f675e" data-elfsight-app-lazy></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-brand">carisma</div>
+    <div class="footer-tag">Healthier Carbs. Better Living. — From the House of SV Agri</div>
+    <div class="footer-contact">
+      📧 <a href="tel:+918805983616"></a> &nbsp;·&nbsp; <a href="mailto:hemant@svagri.co.in">hemant@svagri.co.in</a><br>
+      📧 <a href="tel:+918587085063"></a> &nbsp;·&nbsp; <a href="mailto:anuj.maheshwari@svagri.in">anuj.maheshwari@svagri.in</a>
+    </div>
+  </div>
+  <ul class="footer-links">
+    <li><a href="#products">Products</a></li>
+    <li><a href="#availability">Where to Buy</a></li>
+    <li><a href="#learn">Learn</a></li>
+    <li><a href="#">About Us</a></li>
+    <li><a href="#">Privacy Policy</a></li>
+  </ul>
+  <div class="footer-copy">© 2025 SV Agri Processing Pvt Ltd. All rights reserved. Carisma is a registered trademark of SV Agri Processing Pvt Ltd, Pune.</div>
+</footer>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/917028155911?text=Hi%2C%20I%20want%20to%20know%20more%20about%20Carisma%20Low%20GI%20Potato" target="_blank" rel="noopener noreferrer" class="wa" aria-label="Chat on WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.12.554 4.107 1.523 5.836L.057 23.215a.75.75 0 0 0 .916.938l5.451-1.43A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.677-.523-5.197-1.432l-.372-.222-3.857 1.013 1.03-3.762-.242-.383A9.944 9.944 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+</a>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.07, rootMargin: '0px 0px -20px 0px' });
+  document.querySelectorAll('.fade-up').forEach(el => {
+    io.observe(el);
+    if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('visible');
+  });
+  const heroImg = document.getElementById('heroImg');
+
+  // Hero auto-rotate: base image <-> Vita Powder promo, every 3s
+  let heroShowingVita = false;
+  const heroInner = document.getElementById('heroInner');
+  const heroImgVita = document.getElementById('heroImgVita');
+  setInterval(() => {
+    heroShowingVita = !heroShowingVita;
+    heroImg.classList.toggle('faded', heroShowingVita);
+    heroImgVita.classList.toggle('active', heroShowingVita);
+    heroInner.classList.toggle('vita-active', heroShowingVita);
+  }, 3000);
+
+  heroImgVita.addEventListener('click', () => {
+    const msg = encodeURIComponent("Hi Carisma team, I want to get free Carisma Vita Orange Sweet Potato Powder");
+    window.open(`https://wa.me/917028155911?text=${msg}`, '_blank', 'noopener,noreferrer');
+  });
+</script>
+<script>
+const cityData = {
+
+  pune: [
+    {
+      name:'Zepto',
+      img:'https://static.wixstatic.com/media/2ef54a_b898ed0d8bed46569fd9f41cddb77cae~mv2.jpg',
+      url:'https://www.zepto.com/pn/potato-carisma/pvid/ff481c9e-b586-49f6-a1b1-d46bb696aa2e'
+    },
+    {
+      name:'Blinkit',
+      img:'https://static.wixstatic.com/media/2ef54a_70f0bd312fbc4a4181a85e5230b15067~mv2.png',
+      url:'https://blinkit.com/prn/potato-carisma-lower-glycemic-index-batata/prid/365432'
+    },
+    {
+      name:'BigBasket',
+      img:'https://static.wixstatic.com/media/2ef54a_320c3f8c1f61421eb04d8527841c5a77~mv2.png',
+      url:'https://www.bigbasket.com/pd/40231072/fresho-potato-carisma-lower-glycemic-index-1-kg/'
+    }
+  ],
+
+  mumbai: [
+    {
+      name:'Zepto',
+      img:'https://static.wixstatic.com/media/2ef54a_b898ed0d8bed46569fd9f41cddb77cae~mv2.jpg',
+      url:'https://www.zepto.com/pn/potato-carisma/pvid/ff481c9e-b586-49f6-a1b1-d46bb696aa2e'
+    },
+    {
+      name:'Blinkit',
+      img:'https://static.wixstatic.com/media/2ef54a_70f0bd312fbc4a4181a85e5230b15067~mv2.png',
+      url:'https://blinkit.com/prn/potato-carisma-lower-glycemic-index-batata/prid/365432'
+    },
+    {
+      name:'BigBasket',
+      img:'https://static.wixstatic.com/media/2ef54a_320c3f8c1f61421eb04d8527841c5a77~mv2.png',
+      url:'https://www.bigbasket.com/pd/40231072/fresho-potato-carisma-lower-glycemic-index-1-kg/'
+    }
+  ],
+
+  delhi: [
+    {
+      name:'Blinkit',
+      img:'https://static.wixstatic.com/media/2ef54a_70f0bd312fbc4a4181a85e5230b15067~mv2.png',
+      url:'https://blinkit.com/prn/potato-carisma-lower-glycemic-index-batata/prid/365432'
+    },
+    {
+      name:'BigBasket',
+      img:'https://static.wixstatic.com/media/2ef54a_320c3f8c1f61421eb04d8527841c5a77~mv2.png',
+      url:'https://www.bigbasket.com/pd/40231072/fresho-potato-carisma-lower-glycemic-index-1-kg/'
+    },
+    {
+      name:'Flipkart Minutes',
+      img:'https://static.wixstatic.com/media/2ef54a_1511bd9ee64e4aa9b382a573af06995e~mv2.png',
+      url:'https://dl.flipkart.com/dl/carisma-potato/p/itm5d34d8c614812?pid=VEGHCKUYWWFZYHHZ&lid=LSTVEGHCKUYWWFZYHHZ7UU5TY&hl_lid=&marketplace=HYPERLOCAL&fm=eyJ3dHAiOiJhdGxhc19wcm9kdWN0X3N1bW1hcnlfZXh0ZW5kZWRfcHJvZHVjdF9ncmlkX2NvbXBhY3RfdmlldyIsInBycHQiOiJzcCIsIm1pZCI6ImFkcyJ9&_refId=&_appId=CL'
+    }
+  ],
+
+  bangalore: [
+    {
+      name:'Instamart',
+      img:'https://static.wixstatic.com/media/2ef54a_9f5786ac27e944ca82c9f2aff4d69b87~mv2.jpg',
+      url:null
+    }
+  ]
+};
+
+function renderCity(city){
+  const grid=document.getElementById('platformGrid');
+
+  grid.innerHTML=cityData[city].map(item=>{
+    const hasUrl = !!item.url;
+    const tag = hasUrl ? 'a' : 'div';
+    const attrs = hasUrl ? `href="${item.url}" target="_blank" rel="noopener noreferrer"` : '';
+    const cls = hasUrl ? 'platform-card' : 'platform-card disabled';
+    const cta = hasUrl ? 'Buy Now ↗' : 'Opening Soon';
+    return `
+      <${tag} class="${cls}" ${attrs}>
+        <img src="${item.img}" alt="${item.name}">
+        <h4>${item.name}</h4>
+        <div class="pcard-cta">${cta}</div>
+      </${tag}>
+    `;
+  }).join('');
+}
+
+renderCity('pune');
+
+function goToPanIndia(){
+  document.getElementById('panel-pan-india').scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+document.querySelectorAll('.city-tab').forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    document.querySelectorAll('.city-tab')
+      .forEach(t=>t.classList.remove('active'));
+
+    tab.classList.add('active');
+    renderCity(tab.dataset.city);
+  });
+});
+</script>
+</body>
+</html>

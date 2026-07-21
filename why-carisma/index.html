@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Why Carisma — The Science Behind Our Low GI Claim | House of Carisma</title>
+<meta name="description" content="Peer-reviewed research, academic reviews and independent press coverage behind Carisma's Low Glycaemic Index potato.">
+<meta name="theme-color" content="#0F6E56">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --teal: #0F6E56; --teal-light: #1D9E75; --teal-pale: #E1F5EE;
+    --orange: #D85A30; --orange-pale: #FAECE7;
+    --gold: #BA7517; --gold-pale: #FAEEDA;
+    --ink: #1A1A18; --ink-2: #4A4A46; --ink-3: #888780;
+    --cream: #FAFAF7; --white: #ffffff;
+    --font-d: 'Playfair Display', Georgia, serif;
+    --font-b: 'DM Sans', system-ui, sans-serif;
+    --r: 16px; --r-lg: 24px;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-b); background: var(--cream); color: var(--ink); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 300;
+    background: rgba(250,250,247,0.96); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border-bottom: 0.5px solid rgba(15,110,86,0.1);
+    height: 58px; display: flex; align-items: center; justify-content: space-between; padding: 0 3rem;
+  }
+  .nav-logo { text-decoration: none; display: flex; flex-direction: column; line-height: 1; }
+  .nav-logo .ho { font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-3); }
+  .nav-logo .br { font-family: var(--font-d); font-size: 21px; font-weight: 800; color: var(--teal); }
+  .dot { display: inline-block; width: 5px; height: 5px; background: var(--orange); border-radius: 50%; margin-left: 1px; vertical-align: middle; margin-bottom: 3px; }
+  .nav-r { display: flex; align-items: center; gap: 2rem; }
+  .nav-links { display: flex; gap: 1.75rem; list-style: none; }
+  .nav-links a { font-size: 13px; font-weight: 500; color: var(--ink-2); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--teal); }
+  .nav-links a.active { color: var(--teal); font-weight: 700; }
+  .nav-cta { background: var(--teal); color: #fff; padding: 9px 22px; border-radius: 100px; font-size: 13px; font-weight: 600; text-decoration: none; transition: background 0.2s; }
+  .nav-cta:hover { background: var(--teal-light); }
+
+  .container { max-width: 980px; margin: 0 auto; padding: 0 3rem; }
+  .divider { height: 1px; background: rgba(15,110,86,0.08); }
+
+  /* ── PAGE HEADER ── */
+  .page-header { padding: 9rem 0 3.5rem; background: var(--white); }
+  .ph-label { font-size: 10px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--teal); margin-bottom: 0.7rem; }
+  .ph-title { font-family: var(--font-d); font-size: clamp(2.1rem, 4.5vw, 3.2rem); font-weight: 800; color: var(--ink); line-height: 1.1; letter-spacing: -0.02em; max-width: 780px; }
+  .ph-sub { font-size: 1.05rem; color: var(--ink-2); font-weight: 300; line-height: 1.75; max-width: 680px; margin-top: 1.25rem; }
+  .ph-stats { display: flex; gap: 2.5rem; flex-wrap: wrap; margin-top: 2.25rem; }
+  .ph-stat-num { font-family: var(--font-d); font-size: 2rem; font-weight: 800; color: var(--teal); line-height: 1; }
+  .ph-stat-label { font-size: 12px; color: var(--ink-3); margin-top: 4px; max-width: 140px; }
+
+  /* ── STUDY CARDS ── */
+  .studies { padding: 3.5rem 0 5rem; background: var(--cream); }
+  .study-card { background: var(--white); border: 1.5px solid rgba(15,110,86,0.1); border-radius: var(--r-lg); padding: 2.5rem; margin-bottom: 1.5rem; }
+  .study-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 1.5rem; margin-bottom: 1rem; flex-wrap: wrap; }
+  .study-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 10.5px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; padding: 6px 14px; border-radius: 100px; }
+  .badge-primary { background: var(--teal-pale); color: var(--teal); }
+  .badge-review { background: var(--gold-pale); color: var(--gold); }
+  .badge-health { background: var(--orange-pale); color: var(--orange); }
+  .badge-press { background: #EFEFEE; color: var(--ink-2); }
+  .study-num { font-family: var(--font-d); font-size: 2.4rem; font-weight: 800; color: rgba(15,110,86,0.12); line-height: 1; }
+  .study-title { font-family: var(--font-d); font-size: 1.5rem; font-weight: 800; color: var(--ink); line-height: 1.25; letter-spacing: -0.01em; margin-bottom: 0.4rem; }
+  .study-source { font-size: 12.5px; color: var(--ink-3); font-weight: 500; margin-bottom: 1.25rem; }
+  .study-body { font-size: 0.95rem; color: var(--ink-2); font-weight: 300; line-height: 1.8; }
+  .study-body p { margin-bottom: 1rem; }
+  .study-body p:last-child { margin-bottom: 0; }
+  .study-key { background: var(--cream); border-left: 3px solid var(--teal); border-radius: 0 10px 10px 0; padding: 14px 18px; margin: 1.25rem 0; font-size: 0.9rem; color: var(--ink); font-weight: 500; line-height: 1.6; }
+  .study-link { display: inline-flex; align-items: center; gap: 7px; margin-top: 1.5rem; color: var(--teal); font-size: 13px; font-weight: 700; text-decoration: none; }
+  .study-link:hover { color: var(--teal-light); }
+
+  /* ── CTA ── */
+  .research-cta { background: var(--ink); padding: 4.5rem 0; text-align: center; }
+  .rc-title { font-family: var(--font-d); font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; color: #fff; line-height: 1.2; }
+  .rc-sub { font-size: 0.95rem; color: rgba(255,255,255,0.55); font-weight: 300; margin-top: 0.75rem; max-width: 480px; margin-left: auto; margin-right: auto; }
+  .rc-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--teal); color: #fff; padding: 16px 34px; border-radius: 100px; font-family: var(--font-b); font-size: 15px; font-weight: 700; text-decoration: none; margin-top: 1.75rem; transition: background 0.2s, transform 0.2s; }
+  .rc-btn:hover { background: var(--teal-light); transform: translateY(-2px); }
+
+  /* ── FOOTER ── */
+  footer { background: var(--ink); padding: 3rem; border-top: 1px solid rgba(255,255,255,0.05); display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: start; }
+  .footer-brand { font-family: var(--font-d); font-size: 20px; font-weight: 800; color: rgba(255,255,255,0.85); }
+  .footer-tag { font-size: 12px; color: rgba(255,255,255,0.3); font-weight: 300; margin-top: 4px; margin-bottom: 1rem; }
+  .footer-contact { font-size: 12px; color: rgba(255,255,255,0.45); line-height: 2; }
+  .footer-contact a { color: #9FE1CB; text-decoration: none; }
+  .footer-links { display: flex; flex-direction: column; gap: 0.6rem; list-style: none; text-align: right; }
+  .footer-links a { font-size: 13px; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: #9FE1CB; }
+  .footer-copy { grid-column: 1/-1; font-size: 11px; color: rgba(255,255,255,0.18); font-weight: 300; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1.5rem; }
+
+  .wa { position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 200; width: 52px; height: 52px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(37,211,102,0.4); text-decoration: none; transition: transform 0.2s; }
+  .wa:hover { transform: scale(1.08); }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 1.25rem; height: 52px; }
+    .nav-links { display: none; }
+    .container { padding: 0 1.25rem; }
+    .page-header { padding: 7rem 0 2.5rem; }
+    .studies { padding: 2.5rem 0 3.5rem; }
+    .study-card { padding: 1.75rem 1.5rem; }
+    .study-top { flex-direction: column-reverse; align-items: flex-start; gap: 0.5rem; }
+    footer { grid-template-columns: 1fr; padding: 2rem 1.25rem; }
+    .footer-links { text-align: left; flex-direction: row; flex-wrap: wrap; gap: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <span class="ho">House of</span>
+    <span class="br">carisma<span class="dot"></span></span>
+  </a>
+  <div class="nav-r">
+    <ul class="nav-links">
+      <li><a href="index.html#availability">Shop Now</a></li>
+      <li><a href="index.html#products">Products</a></li>
+      <li><a href="index.html#learn">Learn</a></li>
+      <li><a href="why-carisma.html" class="active">Why Carisma</a></li>
+    </ul>
+    <a href="index.html#availability" class="nav-cta">Order Now</a>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+  <div class="container">
+    <p class="ph-label">Science & Research</p>
+    <h1 class="ph-title">The Low GI claim isn't ours to make. Science made it first.</h1>
+    <p class="ph-sub">Carisma didn't start as a marketing idea — it started as a discovery. Here is the actual peer-reviewed research, academic review, and independent press coverage behind the claim, in one place, unedited in substance.</p>
+    <div class="ph-stats">
+      <div><div class="ph-stat-num">1</div><div class="ph-stat-label">Peer-reviewed origin study, British Journal of Nutrition</div></div>
+      <div><div class="ph-stat-num">7</div><div class="ph-stat-label">Potato cultivars tested — only one classified Low GI</div></div>
+      <div><div class="ph-stat-num">53–103</div><div class="ph-stat-label">GI range across cultivars tested in the study</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- STUDIES -->
+<section class="studies">
+  <div class="container">
+
+    <!-- STUDY 1 -->
+    <div class="study-card">
+      <div class="study-top">
+        <div>
+          <span class="study-badge badge-primary">Peer-Reviewed Study</span>
+        </div>
+        <div class="study-num">01</div>
+      </div>
+      <div class="study-title">Discovery of a low-glycaemic index potato and relationship with starch digestion in vitro</div>
+      <div class="study-source">Ek, Wang, Copeland & Brand-Miller · British Journal of Nutrition (2014) · University of Sydney</div>
+      <div class="study-body">
+        <p>This is the origin study — the research that first identified Carisma as a genuinely low-GI potato. Researchers at the University of Sydney, working with Professor Jennie Brand-Miller (co-creator of the glycaemic index concept itself), tested seven common and newly introduced potato cultivars under International Standard Organisation (ISO) testing guidelines.</p>
+        <p>The cultivars produced a wide spread of glycaemic index values, from 53 all the way to 103 — an enormous range for what most consumers think of as a single food category. Of the seven, only Carisma was classified as low-GI. Nicola came in as medium-GI, and the remaining five cultivars were all classified high-GI.</p>
+        <p>The study also examined <em>why</em>: in-vitro starch hydrolysis and amylose content analysis were used to connect each cultivar's digestibility to its measured glycaemic response, giving the finding a mechanistic basis rather than a one-off observation.</p>
+      </div>
+      <div class="study-key">Key finding: Of 7 potato cultivars tested under ISO guidelines, Carisma was the only one classified as Low GI.</div>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/24103358/" target="_blank" rel="noopener noreferrer" class="study-link">
+        Read the study on PubMed
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+      </a>
+    </div>
+
+    <!-- STUDY 2 -->
+    <div class="study-card">
+      <div class="study-top">
+        <div>
+          <span class="study-badge badge-review">Academic Review</span>
+        </div>
+        <div class="study-num">02</div>
+      </div>
+      <div class="study-title">Starchy Carbohydrates in a Healthy Diet: The Role of the Humble Potato</div>
+      <div class="study-source">Robertson et al. · Nutrients (MDPI), 2018</div>
+      <div class="study-body">
+        <p>This is a broader academic review examining the potato's place in a healthy diet — moving past the outdated idea that all potatoes are nutritionally equal. The review draws together evidence on glycaemic response, resistant starch, and how cultivar and cooking method change a potato's health profile.</p>
+        <p>Carisma is cited directly as a demonstrated example of a naturally low-GI potato cultivar, referencing the University of Sydney findings. The review explains the underlying mechanism: Carisma's starch has a notably higher gelatinisation onset temperature than other cultivars, meaning more of its starch resists rapid digestion and converts to sugar more slowly — the biological basis for a lower glycaemic response.</p>
+      </div>
+      <div class="study-key">Key finding: Carisma's higher starch gelatinisation temperature is the mechanistic reason its GI stays low even after cooking.</div>
+      <a href="https://www.mdpi.com/2072-6643/10/11/1764" target="_blank" rel="noopener noreferrer" class="study-link">
+        Read the review on MDPI
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+      </a>
+    </div>
+
+    <!-- STUDY 3 -->
+    <div class="study-card">
+      <div class="study-top">
+        <div>
+          <span class="study-badge badge-health">Health Platform</span>
+        </div>
+        <div class="study-num">03</div>
+      </div>
+      <div class="study-title">Can Diabetics Eat Potatoes?</div>
+      <div class="study-source">Apollo247 (Apollo Hospitals) — Consumer Health Blog</div>
+      <div class="study-body">
+        <p>Apollo247, one of India's largest health platforms, addresses a question that keeps many diabetics and pre-diabetics away from potatoes altogether. The article explains that not all potatoes carry the same risk — variety matters as much as portion size.</p>
+        <p>Carisma potatoes are named directly as one of the better choices for people managing diabetes, specifically because of their lower starch content compared to high-starch varieties like Russet. This is independent Indian medical-platform validation of the same underlying science — written for consumers, not researchers.</p>
+      </div>
+      <div class="study-key">Key finding: Carisma named directly, by an Indian health platform, as a better potato choice for diabetics due to lower starch.</div>
+      <a href="https://www.apollo247.com/blog/article/can-diabetics-eat-potatoes" target="_blank" rel="noopener noreferrer" class="study-link">
+        Read the article on Apollo247
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+      </a>
+    </div>
+
+    <!-- STUDY 4 -->
+    <div class="study-card">
+      <div class="study-top">
+        <div>
+          <span class="study-badge badge-press">Trade Press</span>
+        </div>
+        <div class="study-num">04</div>
+      </div>
+      <div class="study-title">Nutrispud Line of Potatoes Answers Consumer Demand for Healthier Options</div>
+      <div class="study-source">FreshPlaza — North America Produce Trade Press</div>
+      <div class="study-body">
+        <p>FreshPlaza covers the global produce and horticulture trade. This piece reports on EarthFresh's "Nutrispud" line, built around the Carisma cultivar and marketed as a Low Glycemic Response potato — described as the first potato product on the market to offer naturally slow-release carbohydrates.</p>
+        <p>The article positions this as a direct response to consumer demand for healthier staple carbohydrates, and frames Carisma's low-GI trait as a genuine point of commercial and agricultural differentiation — not just a health claim, but a supply-chain and varietal story that the produce trade itself considers newsworthy.</p>
+      </div>
+      <div class="study-key">Key finding: Independent trade press coverage confirms Carisma-based products are marketed internationally as the first naturally slow-release-carb potato.</div>
+      <a href="https://www.freshplaza.com/north-america/article/9021491/nutrispud-line-of-potatoes-answers-consumer-demand-for-healthier-options/" target="_blank" rel="noopener noreferrer" class="study-link">
+        Read the article on FreshPlaza
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="research-cta">
+  <div class="container">
+    <div class="rc-title">Now you've seen the science.</div>
+    <div class="rc-sub">The same Carisma potato behind this research is the one on your nearest quick-commerce app — or on its way to you, anywhere in India.</div>
+    <a href="index.html#availability" class="rc-btn">
+      Shop Carisma Now
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-brand">carisma</div>
+    <div class="footer-tag">Healthier Carbs. Better Living. — From the House of SV Agri</div>
+    <div class="footer-contact">
+      📧 <a href="mailto:hemant@svagri.co.in">hemant@svagri.co.in</a><br>
+      📧 <a href="mailto:anuj.maheshwari@svagri.in">anuj.maheshwari@svagri.in</a>
+    </div>
+  </div>
+  <ul class="footer-links">
+    <li><a href="index.html#products">Products</a></li>
+    <li><a href="index.html#availability">Where to Buy</a></li>
+    <li><a href="index.html#learn">Learn</a></li>
+    <li><a href="why-carisma.html">Why Carisma</a></li>
+    <li><a href="index.html#">Privacy Policy</a></li>
+  </ul>
+  <div class="footer-copy">© 2025 SV Agri Processing Pvt Ltd. All rights reserved. Carisma is a registered trademark of SV Agri Processing Pvt Ltd, Pune.</div>
+</footer>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/917028155911?text=Hi%2C%20I%20want%20to%20know%20more%20about%20Carisma%20Low%20GI%20Potato" target="_blank" rel="noopener noreferrer" class="wa" aria-label="Chat on WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.12.554 4.107 1.523 5.836L.057 23.215a.75.75 0 0 0 .916.938l5.451-1.43A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.677-.523-5.197-1.432l-.372-.222-3.857 1.013 1.03-3.762-.242-.383A9.944 9.944 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+</a>
+
+</body>
+</html>
